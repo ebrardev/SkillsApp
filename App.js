@@ -24,7 +24,8 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <View style={styles.container}>
-        <Button
+        <Button 
+        
           title="Add skills" // " Add skils" -> "Add skills" düzeltmesi
           color="blue"
           onPress={startModal}
@@ -36,7 +37,7 @@ export default function App() {
             keyExtractor={(item) => item.id} // keyExtractor eklenmeli
             renderItem={(itemData) => (
               <View style={styles.listItem}>
-                <Text>{itemData.item.value}</Text>
+                <Text style={styles.text}>{itemData.item.value}</Text>
               </View>
             )}
           />
@@ -49,15 +50,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
     backgroundColor: '#fff',
     paddingTop: 50,
     paddingHorizontal: 20,
   },
   listItem: { // Stil için listItem düzenlemesi
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: 'blue',
+    
     color: 'white',
     borderRadius: 10,
     marginVertical: 5,
   },
+  text: { // Stil için text düzenlemesi
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+ 
 });
