@@ -1,23 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { useState } from 'react';
+import SkillsInput from './components/SkillsInput';
 
-import React, { useState } from 'react';
-import SkillsInput from './src/components/SkillsInput';
 export default function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
-  }
+  const startModal = () => {
+    setModalIsVisible(true);
+  };
   return (
     <>
       <StatusBar style="auto" />
       <View style={styles.container}>
-        <View style={styles.frame}>
-        <Button style={styles.button} title="Add Skill" color='white'  onPress={openModal} />
-      
-        </View>
-        <SkillsInput visible={openModal} />
+        <Button title=" Add skils" color="blue" onPress={startModal} />
+        <SkillsInput visible={modalIsVisible} />
       </View>
     </>
   );
@@ -30,16 +27,4 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
   },
-  button: {
-  
-    padding: 20,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  frame: {  
-    backgroundColor: 'blue',
-    borderRadius: 15,
-    marginTop: 20,
-  }
-
 });
