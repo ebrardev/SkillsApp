@@ -9,12 +9,25 @@ export default function App() {
   const startModal = () => {
     setModalIsVisible(true);
   };
+  const endModal = () => {
+    setModalIsVisible(false);
+  };
+  const addSkill = (skillTitle) =>{
+    console.log(skillTitle)
+    endModal()
+
+  }
   return (
     <>
       <StatusBar style="auto" />
       <View style={styles.container}>
-        <Button title=" Add skils" color="blue" onPress={startModal} />
-        <SkillsInput visible={modalIsVisible} />
+        <Button title=" Add skils" color="blue" 
+        onPress={startModal} 
+        
+        
+        
+        />
+        <SkillsInput visible={modalIsVisible} onCancel ={endModal}  onAddSkill={addSkill} />
       </View>
     </>
   );

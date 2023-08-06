@@ -1,7 +1,15 @@
 import { StyleSheet, Text, View,Modal,Image, TextInput, Button,Platform } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function SkillsInput({visible}) {
+export default function SkillsInput({visible,onAddSkill,onCancel}) {
+
+  const [enteredSkill, setEnteredSkill] = useState('')
+
+  const addSkillHandler = () => {
+    onAddSkill(enteredSkill)
+     
+  }
+
   return (
     <Modal
     animationType="slide"
@@ -10,13 +18,15 @@ export default function SkillsInput({visible}) {
    >
     <View style={styles.inputContainer}>
       <Image   source={require('../assets/images/skill.png')} style={styles.image} />
-      <TextInput placeholder="Enter your skills" style={styles.input} />
+      <TextInput placeholder="Enter your skills" style={styles.input} value={enteredSkill} 
+      onChangeText={(text)=>setEnteredSkill(text)}  
+       />
       <View style={styles.buttonContainer}>
    <View style={styles.button}>
-    <Button title="Remove" color="red" />
+    <Button title="Remove" color="red" onPress={onCancel} />
    </View>
    <View style={styles.button}>
-    <Button title="Add" color="green" />
+    <Button title="Add" color="green"  onPress={addSkillHandler} />
    </View>
       </View>
     </View>
